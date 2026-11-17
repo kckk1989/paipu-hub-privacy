@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — paipu-hub (v1.0.0)</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --ink: #0f172a;
+    --muted: #475569;
+    --line: #e2e8f0;
+    --accent: #0284c7;
+    --accent-bg: #f0f9ff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0b0f17;
+      --card: #111827;
+      --ink: #f1f5f9;
+      --muted: #94a3b8;
+      --line: #1e293b;
+      --accent: #38bdf8;
+      --accent-bg: rgba(56, 189, 248, 0.1);
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    padding: 32px 16px 64px;
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+  }
+  main {
+    max-width: 820px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 36px 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  }
+  h1 { margin: 0 0 6px; font-size: 26px; }
+  .meta { color: var(--muted); font-size: 13.5px; margin-bottom: 22px; }
+  .banner {
+    background: var(--accent-bg);
+    border-left: 4px solid var(--accent);
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 26px;
+  }
+  h2 {
+    margin: 28px 0 10px;
+    font-size: 18px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid var(--line);
+  }
+  ul, ol { padding-left: 22px; }
+  li { margin: 6px 0; }
+  code {
+    background: var(--accent-bg);
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-size: 13.5px;
+  }
+  hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Privacy Policy — paipu-hub (v1.0.0)</h1>
+  <div class="meta">Last Updated: 2026-11-17</div>
+
+  <div class="banner">
+    <strong>paipu-hub</strong> is a 100% local-first Riichi Mahjong replay collector, statistics dashboard, and 3D AI review extension for Google Chrome. <strong>It has no developer-operated backend servers, user accounts, analytics, or tracking.</strong>
+  </div>
+
+  <h2>1. Data Accessed and Handled Locally</h2>
+  <p>To perform its single purpose of collecting, deduplicating, and analyzing your Mahjong replays, the extension accesses and processes the following data <strong>strictly on your local device</strong>:</p>
+  <ol>
+    <li><strong>Website Content (Mahjong Replays &amp; AI Reviews)</strong>
+      <ul>
+        <li>When you click <strong>"Add to Library"</strong> (or enable the optional <strong>Auto</strong> capture toggle) on supported replay/AI review sites, or manually paste a replay URL / <code>tenhou6</code> JSON into the dashboard, the extension reads the game log, round events, scores, and AI evaluation weights from that page.</li>
+        <li>On <strong>Mahjong Soul</strong> domains (<code>game.maj-soul.com</code>, <code>game.maj-soul.net</code>, <code>game.mahjongsoul.com</code>, <code>mahjongsoul.game.yo-star.com</code>), a passive <code>MAIN</code>-world observer (<code>content/majsoul-hook.js</code>) inspects binary WebSocket replay messages inside your active tab solely to reconstruct the replay record locally when you open a match log. It does not automate gameplay, modify requests, or transmit data to any external server.</li>
+      </ul>
+    </li>
+    <li><strong>Web History (Supported Replay URLs Only)</strong>
+      <ul>
+        <li>The extension inspects the URL of your active tab <strong>only</strong> when it matches the supported Mahjong replay/AI domains declared in <code>manifest.json</code> (<code>tenhou.net</code>, <code>mjai.ekyu.moe</code>, <code>gokujan.com</code>, <code>naga.dmv.nico</code>, <code>rc.honk.li</code>, <code>riichi.miai.moe</code>, and the Mahjong Soul domains above). This is used solely to show the capture card and prevent duplicate imports. Browsing history outside those domains is never accessed or recorded.</li>
+      </ul>
+    </li>
+    <li><strong>Personally Identifiable Information (Player Nicknames &amp; Mahjong Soul Account ID)</strong>
+      <ul>
+        <li>Replay logs contain the table players' display nicknames. On Mahjong Soul, the extension also reads the signed-in <code>account_id</code> from the open game page solely to automatically identify which seat (East/South/West/North) corresponds to your point of view. Neither nicknames nor account IDs leave your browser.</li>
+      </ul>
+    </li>
+  </ol>
+
+  <h2>2. Where Data Is Stored &amp; Network Requests</h2>
+  <ul>
+    <li><strong>100% Local Storage:</strong> All captured games, computed statistics, bookmarks, spaced-repetition drill progress, and UI preferences (language/theme) are stored exclusively inside your browser's local <strong>IndexedDB</strong> and <code>chrome.storage</code>.</li>
+    <li><strong>Zero Developer Servers:</strong> The developer does not collect, receive, store, or have access to any of your replays, account IDs, or browsing data.</li>
+    <li><strong>Direct Platform Requests Only:</strong> When you trigger a fetch or import by URL, your browser communicates directly with the corresponding supported Mahjong/AI website listed in <code>host_permissions</code>. No proxy or third-party analytics endpoint is involved.</li>
+    <li><strong>Optional Local Folder Auto-Backup:</strong> If you explicitly enable the File System Access auto-backup feature, compressed <code>.json.gz</code> backups are written only to the local folder you selected on your device.</li>
+  </ul>
+
+  <h2>3. Chrome Web Store Limited Use &amp; Third-Party Sharing</h2>
+  <p>In compliance with the <strong>Chrome Web Store User Data Policy</strong> (including the Limited Use requirements):</p>
+  <ul>
+    <li><strong>No Sale or Transfer:</strong> paipu-hub does <strong>not</strong> sell, rent, or transfer user data to third parties.</li>
+    <li><strong>No Advertising or Profiling:</strong> User data is never used for personalized advertising, marketing, or creditworthiness/lending purposes.</li>
+    <li><strong>No Remote Code:</strong> All scripts, stylesheets, and 3D assets (including Three.js) are bundled directly inside the extension package.</li>
+  </ul>
+
+  <h2>4. Your Control &amp; Data Deletion</h2>
+  <ul>
+    <li><strong>Export:</strong> You can export your full local database at any time as <code>.json</code> or <code>.json.gz</code> from the dashboard.</li>
+    <li><strong>Delete:</strong> You can delete individual games, click <strong>"Clear"</strong> in the dashboard to wipe IndexedDB, or uninstall the extension to remove all locally stored extension data permanently.</li>
+  </ul>
+
+  <h2>5. Contact</h2>
+  <ul>
+    <li><strong>Developer:</strong> Kenneth Chan</li>
+    <li><strong>X (Twitter):</strong> <a href="https://x.com/kennethkkchan" target="_blank" rel="noopener noreferrer">@kennethkkchan</a></li>
+  </ul>
+
+  <hr>
+
+  <h1>隱私權政策 — paipu-hub (v1.0.0)（繁體中文摘要）</h1>
+  <div class="meta">最後更新日期：2026-11-17</div>
+  <p><strong>paipu-hub</strong> 是一款純本機運行的日本麻將牌譜收集管理台與 3D AI 複盤工具。<strong>本擴充功能沒有任何開發者伺服器、不需要註冊帳號，也不含任何遙測、廣告或追蹤程式碼。</strong></p>
+  <ol>
+    <li><strong>僅於本機處理的資料範圍</strong>：
+      <ul>
+        <li><strong>網頁內容</strong>：當你在支援的牌譜或 AI 分析網站點擊「加入牌譜庫」（或啟用自動收錄）時，擴充功能會讀取該場牌譜對局事件、分數與 AI 權重；在雀魂網域上，被動式 WebSocket 觀察腳本（<code>majsoul-hook.js</code>）僅於你打開牌譜時在瀏覽器內還原該場牌譜，不進行任何自動操作或外部傳輸。</li>
+        <li><strong>網頁紀錄（僅限支援網域）</strong>：僅檢查符合 <code>manifest.json</code> 所列麻將網域的目前分頁網址，用於辨識平台與去重，不會存取其他任何網站的瀏覽紀錄。</li>
+        <li><strong>個人識別資訊（玩家暱稱與雀魂 <code>account_id</code>）</strong>：僅用於在本機自動辨識哪一家是你本人視角，絕不離開你的瀏覽器。</li>
+      </ul>
+    </li>
+    <li><strong>純本機儲存</strong>：所有牌譜、統計數據、盲測練習進度與語言／主題設定皆只儲存在你自己的瀏覽器 <code>IndexedDB</code> 與 <code>chrome.storage</code> 中；開發者無法存取你的任何資料。</li>
+    <li><strong>不販售、不分享、不轉傳第三方</strong>：完全遵守 Google Chrome Web Store 使用者資料政策與有限使用（Limited Use）規範。</li>
+    <li><strong>資料控制權</strong>：你可隨時在管理台匯出 <code>.json</code> / <code>.json.gz</code> 備份、清空資料庫，或移除擴充功能以徹底刪除本機資料。</li>
+  </ol>
+</main>
+</body>
+</html>
